@@ -1,0 +1,75 @@
+\documentclass{report}
+
+\usepackage{amsmath}
+\usepackage{braket}
+\usepackage{blindtext}
+
+\begin{document}
+\title{Mathematical Notes for Physics and Chemistry}
+\author{Tian Junfu}
+
+\maketitle
+
+\chapter{Simultaneous Measurement and Uncertainty Principle}
+\section{Properties of Simultaneously Diagonalizable Operators}
+\subsection{Property Statement}
+Suppose there exists two matrices $A, B \in M_{n \times n}(F)$ such that an invertible matrix $Q \in M_{n \times n}(F)$ exists and $Q^{-1}AQ$ and $Q^{-1}BQ$ are diagonal matrices, A and B are known to be simultaneously diagonalizable.
+\subsection{Commuting Property}
+Let $T=Q^{-1}AQ$ and $U=Q^{-1}BQ$, \\
+Since T and U are diagonal matrices, $(TU)_{ii}=(UT)_{ii}=T_{ii}\times U_{ii}$ \\
+Hence, $Q^{-1}AQQ^{-1}BQ=Q^{-1}BQQ^{-1}AQ \implies AB=BA$ \\ \\
+Let $u,v$ be eigenvectors of $A\ and\ B$ respectively. We have, \\
+$Av=\lambda_{v} v$ \\ 
+$Bu=\lambda_{u} u$ \\
+$BAv=\lambda_{v}Bv=ABv$ \\
+This implies that $Bv$ is also an eigenvector of A. \\ \\
+Similarly, we have $ABu=\lambda_{u}Au=BAu \implies Au$ is an eigenvector of B. Hence, we see that A and B simply shuffles the eigenvector of each other. They hence must share a common basis. \\ \\
+Hence, to construct Q, we simply let each column of Q be one of vectors from eigenspace. This will diagonalize both A and B, with different permutations of eigenvalues off by a common factor on the diagonals. \\ \\
+Therefore, A and B are simultaneously diagonalizable $\iff$ A and B commute. This also implies that there must exist a basis common to both A and B. Q.E.D.
+\section{Simultaneous Measurement in Quantum Mechanics}
+\subsection{Characteristics of Eigenequation}
+Suppose that for an operator $A$, we have determined the corresponding eigenvector $v$, we have \\
+$A\ket{v}=\lambda \ket{v}$ and \\
+$A^2\ket{v}=\lambda^2 \ket{v}$ \\ \\
+The variance of the measurement can be represented as ${\Delta A}^2 = <A^2> - {<A>}^2$. Since $<A^2>=\bra{v}A^2\ket{v}=\lambda^2$ and $<A>=\bra{v}A\ket{v}=\lambda$, the variance of measurement is 0. We are hence able to precisely measure an observable given the eigenvector of the physical operator. 
+\subsection{Simultaneous Measurement}
+Measuring a state is like taking a projected image of the physical observable in a desirable dimension. Assuming that we have already known the operator, our best guess for a precise measurement is to determine the eigenspace of the operator, which permits a precise measurement. \\ \\
+Given the outcome of our measurement, returned in the form of eigenvalue, we could determine the corresponding state as a basis from the eigenspace if the states are degenerate. Suppose A and B commute, since there exists a basis set common to A and B, we could apply operator B to the state determined from measurement of A. Since the state also belongs to the eigenspace of B, it can be measured precisely. We are hence able to simultaneously obtain the outcome of both measurements. \\ \\
+On the other hand, if A and B do not commute, they do not share a common basis. Let $\ket{\phi}$ be the state determined by measurement with A and $\ket{\psi_i}$ be the set of basis in eigenspace of B. The best we could do to measure $\ket{\phi}$ with B is to decompose it as a linear combination of its bases. \\ \\
+$\ket{\phi}=\sum_{i} c_i\ket{\psi_i}$ \\ \\
+This will mean that measurement $\ket{\phi}$ with B could collapse it to any of the basis in its eigenspace $\ket{\phi_i}$ with probability $|c_i|^2$. Hence, we are unable to precisely measure the state determined from measurement of A with operator B. Hence, we see that for two noncommuting operators, there exists an intrinsic uncertainty with their simultaneous measurement.
+\chapter{Legendre's Polynomial}
+\section{Derivation and Properties of Legendre's Polynomial}
+\subsection{Order of Pole}
+Suppose that our function of interest, f has a zero at $x = x_0$ of order $l$.
+\begin{align*}
+f(x) &= (x-x_0)^lg(x) \\
+f'(x)&=l(x-x_0)^{l-1}g(x)+(x-x_0)^lg'(x) \\
+&= (x-x_0)^{l-1}(lg(x)+(x-x_0)g'(x)) \\
+&= (x-x_0)^{l-1}h(x)
+\end{align*}
+Since f only has a zero with order of $l$, $g(x_0)\neq 0 \implies h(x_0)\neq 0$. Hence, if a function f has a pole at $x=x_0$ with order $l$ $\implies f^{(k)}(x)$ has a pole at $x=x_0$ with order $l-k$. 
+\chapter{Complex Integrals}
+\section{From Green's Theorem to Cauchy Integral}
+In 2 dimension, Green's Theorem relates the line integral of a closed loop to its surface integral. The theorem was stated below.
+\begin{equation*}
+\oint_C Ldx + Mdy=\iint_D (\frac{\partial M}{\partial x}-\frac{\partial L}{\partial y})dxdy
+\end{equation*}
+We observed that for the theorem to hold. A few criteria must be satisfied. These include, 
+\begin{itemize}
+\item D must be a close surface where the boundary was defined by the path C and All values of $(x,y) \in D$ must be defined. That is, there must be no "holes" within the vicinity of D and it must be simply connected.
+\item $\frac{\partial M}{\partial x}$ and $\frac{\partial L}{\partial y}$ must exist for all values of $(x,y) \in D$. In fact, the other two partial derivatives should be defined as well.
+\end{itemize}
+Now we attempt to prove Cauchy's Integral from Green's Theorem. Cauchy's Theorem stated that, let D be a simply connected set.
+\begin{equation*}
+\oint_\gamma f(z)dz = 0
+\end{equation*}
+for any analytic function $f(z)$ on any closed path $\gamma$ defined in D.
+\begin{align*}
+\oint_\gamma f(z)dz &= \oint_\gamma u(x,y)+iv(x,y) (dx + i dy) \\
+&= \oint_\gamma udx-vdy + i\oint_\gamma vdx+udy \\
+&= \iint_D -(\frac{\partial v}{\partial x}+\frac{\partial u}{\partial y})dxdy + i\iint_D (\frac{\partial u}{\partial x}-\frac{\partial v}{\partial y})dxdy \\
+&= 0
+\end{align*}
+We see that for analytic function, we must have Cauchy's Identities $\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}$ and $\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$ hold and all partial derivatives of u,v exist. Substituting the relation into the surface integral above, we justify Cauchy's Theorem. However, since the proof was based on converting the closed path integral into a surface integral using Green's Theorem, the restriction that the domain enclosed by the path $\gamma$ must be simply connected is inherited as well.
+\end{document}
